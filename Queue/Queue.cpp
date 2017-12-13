@@ -1,4 +1,5 @@
 #include "Queue.h"
+#include "Node.h"
 #include <stdlib.h>
 #include <iostream>
 
@@ -18,15 +19,15 @@ Queue::Queue(const Queue& a)
 	else
 	{
 		head = new QNode;
-		head->item = a.head->item;
+		head->PutItem(a.head->GetItem());
 		QNode *newPtr = head;
-		for (QNode *prevPtr = a.head->next; prevPtr; prevPtr = prevPtr->next)
+		for (QNode *prevPtr = a.head->GetNext(); prevPtr; prevPtr = prevPtr->GetNext())
 		{
-			newPtr->next = new QNode;
-			newPtr = newPtr->next;
-			newPtr->item = prevPtr->item;
+			newPtr->PutNext(new QNode);
+			newPtr = newPtr->GetNext();
+			newPtr->PutItem(prevPtr->GetItem());
 		}
-		newPtr->next = NULL;
+		newPtr->PutNext(NULL);
 		tail = newPtr;
 	}
 }
@@ -48,15 +49,15 @@ void Queue::push(int item)
 	}
 	else
 	{
-		newPtr->item = item;
+		newPtr->PutItem(item);
 		if (!head)
 		{
 			head = newPtr;
 		}
 		else
 		{
-			newPtr->next = NULL;
-			tail->next = newPtr;
+			newPtr->PutNext(NULL);
+			tail->PutNext(newPtr);
 		}
 		tail = newPtr;
 	}
@@ -78,9 +79,9 @@ void Queue::pop()
 		}
 		else
 		{
-			head = head->next;
+			head = head->GetNext();
 		}
-		tmp->next = NULL;
+		tmp->PutNext(NULL);
 		delete tmp;
 	}
 }
@@ -90,12 +91,12 @@ void Queue::find(int item)
 	QNode *ptr = head;
 	while (ptr)
 	{
-		if (ptr->item == item)
+		if (ptr->GetItem() == item)
 		{
 			std::cout << "Item " << item << " is found \n";
 			break;
 		}
-		ptr = ptr->next;
+		ptr = ptr->GetNext();
 	}
 	if (!ptr)
 	{
@@ -110,7 +111,7 @@ int Queue::amount()
 	while (ptr)
 	{
 		++count;
-		ptr = ptr->next;
+		ptr = ptr->GetNext();
 	}
 	return count;
 }
@@ -121,22 +122,22 @@ void Queue::sort()
 	{
 		for (int i = 0; i < amount() - 1; ++i)
 		{
-			int tmp = head->item;
+			int tmp = head->GetItem();
 			pop();
 			int steps = 0;
 			while (steps < amount())
 			{
 //				print();
-				if (tmp < head->item)
+				if (tmp < head->GetItem())
 				{
 					push(tmp);
-					tmp = head->item;
+					tmp = head->GetItem();
 					pop();
 					steps = 0;
 				}
 				else
 				{
-					push(head->item);
+					push(head->GetItem());
 					pop();
 					++steps;
 				}
@@ -153,8 +154,8 @@ void Queue::print()
 	std::cout << "Queue: ";
 	while (ptr)
 	{
-		std::cout << ptr->item << " ";
-		ptr = ptr->next;
+		std::cout << ptr->GetItem() << " ";
+		ptr = ptr->GetNext();
 	}
 	std::cout << "\n";
 }

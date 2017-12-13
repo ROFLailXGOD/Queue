@@ -1,13 +1,9 @@
 #pragma once
+#include "Node.h"
 
 class Queue
 {
 private:
-	struct QNode
-	{
-		int item;
-		QNode *next;
-	};
 	QNode *head;
 	QNode *tail;
 public:
