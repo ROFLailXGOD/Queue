@@ -14,7 +14,13 @@ int main()
 	a->push(2);
 	a->push(8);
 	a->print();
-	a->sort();
+
+//	a->sort();
+//	a->bottle_sort();
+//	a->insertion_sort();
+//	a->merge_sort();
+	a->quick_sort();
+
 	a->find(3);
 	a->find(4);
 	std::cout << "Amount of elements in queue is " << a->amount() << "\n";

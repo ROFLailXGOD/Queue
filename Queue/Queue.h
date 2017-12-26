@@ -6,6 +6,14 @@ class Queue
 private:
 	QNode *head;
 	QNode *tail;
+
+	int* TurnIntoArr();
+	void PutEmBack(int*, int);
+
+	void quick_sortpr(int* arr, int left, int right);
+
+	void merge(int*, int, int, int);
+	void merge_sortpr(int*, int, int);
 public:
 	Queue();
 	Queue(const Queue&);
@@ -16,5 +24,9 @@ public:
 	void find(int);
 	int amount();
 	void sort();
+	void bottle_sort(); // Åù¸ îäíà
+	void quick_sort(); // È åù¸
+	void merge_sort(); // ÄÀ ÕÂÀÒÈÒ ÓÆÅ, ß ÓÑÒÀË!
+	void insertion_sort(); // $$!0&!!!11
 	void print();
 };
