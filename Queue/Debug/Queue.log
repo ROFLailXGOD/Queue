@@ -1,3 +1,5 @@
-﻿  Main.cpp
+﻿  Queue.cpp
+c:\users\zabey\documents\visual studio 2015\projects\queue\queue\queue.cpp(16): warning C4553: '==': operator has no effect; did you intend '='?
+c:\users\zabey\documents\visual studio 2015\projects\queue\queue\queue.cpp(17): warning C4553: '==': operator has no effect; did you intend '='?
   Queue.vcxproj -> C:\Users\Zabey\Documents\Visual Studio 2015\Projects\Queue\Debug\Queue.exe
   Queue.vcxproj -> C:\Users\Zabey\Documents\Visual Studio 2015\Projects\Queue\Debug\Queue.pdb (Partial PDB)

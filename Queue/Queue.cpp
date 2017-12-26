@@ -18,12 +18,12 @@ Queue::Queue(const Queue& a)
 	}
 	else
 	{
-		head = new QNode;
+		head = new QNode();
 		head->PutItem(a.head->GetItem());
 		QNode *newPtr = head;
 		for (QNode *prevPtr = a.head->GetNext(); prevPtr; prevPtr = prevPtr->GetNext())
 		{
-			newPtr->PutNext(new QNode);
+			newPtr->PutNext(new QNode());
 			newPtr = newPtr->GetNext();
 			newPtr->PutItem(prevPtr->GetItem());
 		}
@@ -42,7 +42,7 @@ Queue::~Queue()
 
 void Queue::push(int item)
 {
-	QNode *newPtr = new QNode;
+	QNode *newPtr = new QNode();
 	if (!newPtr)
 	{
 		std::cout << "Memory allocation is impossible" << "\n";
